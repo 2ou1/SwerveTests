@@ -21,15 +21,19 @@ public class SwerveModule extends SubsystemBase {
         encoder = new CANcoder(encoderID);
         
         steerPID = new PIDController(SwerveConstants.STEER_P, SwerveConstants.STEER_I, SwerveConstants.STEER_D);
-        steerPID.enableContinuousInput(-180, 180); 
+        steerPID.enableContinuousInput(-0.5, 0.5); 
     }
     
     public void setDesiredState(double speed, Rotation2d angle) {
-        double currentAngle = encoder.getAbsolutePosition().getValueAsDouble();
-        double targetAngle = angle.getDegrees();
+        double currentAngle = encoder.getPosition().getValueAsDouble(); 
+        System.out.println("posisición del encoder" + encoder.getPosition().getValueAsDouble());
+        double targetAngle = angle.getDegrees() / 360;
+        System.out.println("posisición objetivo" + targetAngle);
         double steerOutput = steerPID.calculate(currentAngle, targetAngle);
+        System.out.println("PIDangulo" + steerOutput);
         
-        driveMotor.set(speed / SwerveConstants.MAX_WHEEL_SPEED_MPS); 
+        
+        driveMotor.set(speed * SwerveConstants.MAX_WHEEL_SPEED_MPS); 
         steerMotor.set(steerOutput);
     }
     

@@ -1,15 +1,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.LeftFrontTesting;
 import frc.robot.subsystems.SwerveDriveSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 
 public class DriveWithJoysticks extends Command {
     
-    private final SwerveDriveSubsystem swerveDrive;
+    private final LeftFrontTesting swerveDrive;
     private final XboxController controller;
     
-    public DriveWithJoysticks(SwerveDriveSubsystem swerveDrive, XboxController controller) {
+    public DriveWithJoysticks(LeftFrontTesting swerveDrive, XboxController controller) {
         this.swerveDrive = swerveDrive;
         this.controller = controller;
         addRequirements(swerveDrive);
@@ -17,8 +18,8 @@ public class DriveWithJoysticks extends Command {
     
     @Override
     public void execute() {
-        double xSpeed = -controller.getLeftY(); 
-        double ySpeed = -controller.getLeftX(); 
+        double xSpeed = -controller.getLeftX(); 
+        double ySpeed = -controller.getLeftY(); 
         double rotation = -controller.getRightX(); 
 
         double leftTrigger = controller.getLeftTriggerAxis(); 
@@ -28,7 +29,7 @@ public class DriveWithJoysticks extends Command {
             ySpeed *= slowModeFactor;
             rotation *= slowModeFactor;
         }
-        
+        System.out.println("lectura del control y" + ySpeed);
         swerveDrive.drive(xSpeed, ySpeed, rotation);
     }
     

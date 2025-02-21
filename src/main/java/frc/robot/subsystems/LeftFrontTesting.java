@@ -9,7 +9,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
 
-public class SwerveDriveSubsystem extends SubsystemBase {
+public class LeftFrontTesting extends SubsystemBase {
     
     private final SwerveModule frontLeft = new SwerveModule(
         SwerveConstants.FRONT_LEFT_DRIVE_MOTOR, 
@@ -42,7 +42,7 @@ public class SwerveDriveSubsystem extends SubsystemBase {
     
     private boolean fieldOriented = false;
     
-    public SwerveDriveSubsystem() {}
+    public LeftFrontTesting() {}
 
     /**
      * Habilitar o dehabilitar field.oriented
@@ -69,13 +69,9 @@ public class SwerveDriveSubsystem extends SubsystemBase {
         } else {
             chassisSpeeds = new ChassisSpeeds(ySpeed, xSpeed, rotation);
         }
-        int singY = (0>ySpeed)?-1:1;
-        int singX = (0>xSpeed)?-1:1;
+        
         SwerveModuleState[] states = kinematics.toSwerveModuleStates(chassisSpeeds);
         frontLeft.setDesiredState(states[0].speedMetersPerSecond, states[0].angle);
-        frontRight.setDesiredState(states[1].speedMetersPerSecond, states[1].angle);
-        backLeft.setDesiredState(states[2].speedMetersPerSecond, states[2].angle);
-        backRight.setDesiredState(states[3].speedMetersPerSecond, states[3].angle);
     }
     
     public void stop() {
