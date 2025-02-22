@@ -9,7 +9,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
 
-public class LeftFrontTesting extends SubsystemBase {
+public class SwerveModuleTesting extends SubsystemBase {
     
     private final SwerveModule frontLeft = new SwerveModule(
         SwerveConstants.FRONT_LEFT_DRIVE_MOTOR, 
@@ -42,7 +42,7 @@ public class LeftFrontTesting extends SubsystemBase {
     
     private boolean fieldOriented = false;
     
-    public LeftFrontTesting() {}
+    public SwerveModuleTesting() {}
 
     /**
      * Habilitar o dehabilitar field.oriented
@@ -69,9 +69,16 @@ public class LeftFrontTesting extends SubsystemBase {
         } else {
             chassisSpeeds = new ChassisSpeeds(ySpeed, xSpeed, rotation);
         }
-        
+//AQUÍ SE ELIGE EL MÓDULO QUE SE DESEA PROBAR
+//LOS ESTADOS VAN DE ACUERDO AL MÓDULO
+//FrontLeft 0
+//FrontRight 1
+//BackLeft  2
+//BackRight 3
+
+
         SwerveModuleState[] states = kinematics.toSwerveModuleStates(chassisSpeeds);
-        frontLeft.setDesiredState(states[0].speedMetersPerSecond, states[0].angle);
+        backLeft.setDesiredState(states[2]);
     }
     
     public void stop() {

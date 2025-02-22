@@ -3,16 +3,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveWithJoysticks;
-import frc.robot.subsystems.LeftFrontTesting;
 import frc.robot.subsystems.SwerveDriveSubsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import frc.robot.subsystems.LeftFrontTesting;
+import frc.robot.subsystems.SwerveModuleTesting;
 
 public class RobotContainer {
     
     private final XboxController driverController = new XboxController(0);
-    private final LeftFrontTesting module1 = new LeftFrontTesting();
+    private final SwerveDriveSubsystem module1 = new SwerveDriveSubsystem();
     
     public RobotContainer() {
         module1.setDefaultCommand(new DriveWithJoysticks(module1, driverController));
