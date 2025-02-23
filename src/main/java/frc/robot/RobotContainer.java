@@ -38,6 +38,8 @@ public class RobotContainer {
     private void configureButtonBindings() {
 
       final JoystickButton button1Start = new JoystickButton(Player1Controller, 8);
+      final JoystickButton button1Select = new JoystickButton(Player1Controller, 7);
+
       final JoystickButton button1A = new JoystickButton(Player1Controller, 1);
       final JoystickButton button1B = new JoystickButton(Player1Controller, 2);
       final JoystickButton button1X = new JoystickButton(Player1Controller, 3);
@@ -54,7 +56,8 @@ public class RobotContainer {
 //Funciones botones básicos Player1
         // Cambia entre field oriented y robot oriented usando el botón A 
 
-        button1Start.onTrue(new InstantCommand(() -> module1.toggleFieldOriented()));
+        button1Start.onTrue(new InstantCommand(() -> module1.setFieldOrientedTrue()));
+        button1Select.onTrue(new InstantCommand(() -> module1.setFieldOrientedFalse()));
 
         button1A.onTrue(new InstantCommand(() -> bola.marcoSube(),bola))
         .onFalse(new InstantCommand(() -> bola.marcoStop(),bola));

@@ -29,9 +29,9 @@ public class DriveWithJoysticks extends Command {
             ySpeed *= slowModeFactor;
             rotation *= slowModeFactor;
         }
-        System.out.println("lectura del control x" + xSpeed);
-        System.out.println("lectura del control y" + ySpeed);
-        System.out.println("lectura del control r" + rotation);
+        //System.out.println("lectura del control x" + xSpeed);
+        //System.out.println("lectura del control y" + ySpeed);
+        //System.out.println("lectura del control r" + rotation);
         swerveDrive.drive(xSpeed, ySpeed, rotation);
     }
     

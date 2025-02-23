@@ -38,7 +38,7 @@ public class SwerveModule extends SubsystemBase {
         double error= currentAngle - targetAngle;
         double steerOutput = steerPID.calculate(currentAngle, targetAngle);
 
-        //System.out.println("PIDangulo" + steerOutput);
+        System.out.println("PIDangulo" + steerOutput);
         
         
         driveMotor.set(desiredState.speedMetersPerSecond * Math.cos(error*Math.PI/180)*SwerveConstants.MAX_WHEEL_SPEED_MPS/10); 

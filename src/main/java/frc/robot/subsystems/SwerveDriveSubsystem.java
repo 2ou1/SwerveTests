@@ -52,8 +52,12 @@ public class SwerveDriveSubsystem extends SubsystemBase {
         this.fieldOriented = fieldOriented;
     }
     
-    public void toggleFieldOriented() {
-        fieldOriented = !fieldOriented;
+    public void setFieldOrientedTrue() {
+        fieldOriented = true;
+    }
+
+    public void setFieldOrientedFalse() {
+        fieldOriented = false;
     }
     
     public boolean isFieldOriented() {
